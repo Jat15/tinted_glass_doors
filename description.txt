@@ -1,0 +1,13 @@
+Tinted Glass Doors
+
+Mod ajoutant des portes en verres, style moderne.
+
+Craft:
+GG
+GD	G= Glass D= Dye
+GG
+
+Code par Jat
+Texture par onyx58
+Licence GPLv2 ou plus pour le code
+Graphismes sous licence CreativeCommons by-nc 4.0
