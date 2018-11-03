@@ -32,19 +32,33 @@ tinted_glass_doors_colors = {
 for _, i in ipairs(tinted_glass_doors_colors) do
 	
 	doors.register("tinted_glass_doors:"..i, {
-			tiles = {"tinted_glass_doors_door_"..i..".png"},
-			description = "Tinted Glass Doors "..i,
-			inventory_image = "tinted_glass_doors_door_"..i.."_inv.png",
-			use_texture_alpha = true,
-			groups = {cracky=3, oddly_breakable_by_hand=3},
-			sounds = default.node_sound_glass_defaults(),
-			sound_open = "doors_glass_door_open",
-			sound_close = "doors_glass_door_close",
-			recipe = {
-				{"default:glass", "default:glass"},
-				{"default:glass", "dye:"..i,},
-				{"default:glass", "default:glass"},
-			},
+		tiles = {"tinted_glass_doors_door_"..i..".png"},
+		description = "Tinted Glass Doors "..i,
+		inventory_image = "tinted_glass_doors_door_"..i.."_inv.png",
+		use_texture_alpha = true,
+		groups = {cracky=3, oddly_breakable_by_hand=3},
+		sounds = default.node_sound_glass_defaults(),
+		sound_open = "doors_glass_door_open",
+		sound_close = "doors_glass_door_close",
+		recipe = {
+			{"default:glass", "default:glass"},
+			{"default:glass", "dye:"..i,},
+			{"default:glass", "default:glass"},
+		},
+		mesecons = {effector = {
+		action_on = function(pos, node)
+			local door = doors.get(pos)
+			if door then
+				door:open()
+			end
+		end,
+		action_off = function(pos, node)
+			local door = doors.get(pos)
+			if door then
+				door:close()
+			end
+		end,
+		}
+		},		
 	})
-
 end
